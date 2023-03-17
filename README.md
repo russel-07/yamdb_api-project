@@ -1,2 +1,2 @@
-# Sprint-10
+# api_yamdb
 api_yamdb
