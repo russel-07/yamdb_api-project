@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'auth_and_users',
     'categories_genres_titles',
+    'reviews_comments',
     'rest_framework',
 ]
 
