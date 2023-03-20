@@ -1,8 +1,11 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, mixins, filters
+from django_filters.rest_framework import DjangoFilterBackend
 
-from .models import Categorie, Genre, Title
-from .serializers import CategorieSerializer, GenreSerializer, TitleSerializer
+from .models import Category, Genre, Title
+from .serializers import CategorySerializer, GenreSerializer, ReadTitleSerializer, WriteTitleSerializer
 from .permissions import IsAdminOrReadOnly
+from .filters import TitleFilter
 
 
 class SampleViewSet(mixins.CreateModelMixin, 
@@ -15,14 +18,27 @@ class SampleViewSet(mixins.CreateModelMixin,
     search_fields = ['name']
 
 
-class CategorieViewSet(SampleViewSet):
-    serializer_class = CategorieSerializer
-    queryset = Categorie.objects.all()
+class CategoryViewSet(SampleViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
 
 class GenreViewSet(SampleViewSet):
-    serializer_class = GenreSerializer
     queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+
+
+class TitleViewSet(viewsets.ModelViewSet):
+    queryset = Title.objects.all()
+    permission_classes = [IsAdminOrReadOnly]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = TitleFilter
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return ReadTitleSerializer
+        return WriteTitleSerializer
+    
 
 
 
