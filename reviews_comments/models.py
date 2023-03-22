@@ -16,6 +16,8 @@ class Review(models.Model):
         return self.text
     
     class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
         ordering = ['-id']
         unique_together = ['author', 'title']
 
@@ -27,5 +29,7 @@ class Comment(models.Model):
     pub_date = models.DateTimeField("Дата публикации", auto_now_add=True)
     
     class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
         ordering = ['-id']   
 

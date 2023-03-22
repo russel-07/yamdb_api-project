@@ -9,6 +9,8 @@ class Category(models.Model):
         return self.name
     
     class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
         ordering = ['-id']
 
 
@@ -17,6 +19,8 @@ class Genre(models.Model):
     slug = models.SlugField(unique=True)
 
     class Meta:
+        verbose_name = 'Жанр'
+        verbose_name_plural = 'Жанры'
         ordering = ['-id']
 
 
@@ -32,5 +36,7 @@ class Title(models.Model):
         return self.name
     
     class Meta:
+        verbose_name = 'Произведение'
+        verbose_name_plural = 'Произведения'
         ordering = ['-id']
 
