@@ -24,3 +24,4 @@ urlpatterns = [
     path('api/', include('categories_genres_titles.urls')),
     path('api/', include('reviews_comments.urls')),
 ]
+

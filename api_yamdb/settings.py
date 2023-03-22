@@ -146,8 +146,8 @@ AUTH_USER_MODEL = 'auth_and_users.User'
 
 
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
-#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'russel-1707@yandex.ru'

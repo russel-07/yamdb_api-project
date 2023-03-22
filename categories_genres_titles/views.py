@@ -1,4 +1,3 @@
-from django.shortcuts import get_object_or_404
 from django.db.models import Avg
 from rest_framework import viewsets, mixins, filters
 from django_filters.rest_framework import DjangoFilterBackend
@@ -9,10 +8,8 @@ from .permissions import IsAdminOrReadOnly
 from .filters import TitleFilter
 
 
-class SampleViewSet(mixins.CreateModelMixin, 
-                    mixins.DestroyModelMixin,
-                    mixins.ListModelMixin,
-                    viewsets.GenericViewSet):
+class SampleViewSet(mixins.CreateModelMixin, mixins.DestroyModelMixin,
+                    mixins.ListModelMixin, viewsets.GenericViewSet):
     lookup_field = 'slug'
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [filters.SearchFilter]
@@ -30,7 +27,7 @@ class GenreViewSet(SampleViewSet):
 
 
 class TitleViewSet(viewsets.ModelViewSet):
-    queryset = Title.objects.all().annotate(rating=Avg('reviews__score'))
+    queryset = Title.objects.all().annotate(rating=Avg('reviews__score')).order_by('-id')
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = TitleFilter
@@ -39,9 +36,4 @@ class TitleViewSet(viewsets.ModelViewSet):
         if self.request.method == 'GET':
             return ReadTitleSerializer
         return WriteTitleSerializer
-    
-
-
-
-
 

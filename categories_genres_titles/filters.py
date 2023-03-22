@@ -1,5 +1,5 @@
-
 from django_filters.rest_framework import FilterSet, CharFilter
+
 from .models import Title
 
 
@@ -12,5 +12,4 @@ class TitleFilter(FilterSet):
     class Meta:
         model = Title
         fields = ['category', 'genre', 'year', 'name']
-        #filterset_fields = ['name']
 

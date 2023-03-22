@@ -5,10 +5,16 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
 
+    class Meta:
+        ordering = ['-id']
+
 
 class Genre(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
+
+    class Meta:
+        ordering = ['-id']
 
 
 class Title(models.Model):
@@ -18,4 +24,7 @@ class Title(models.Model):
     description = models.TextField(null=True, blank=True)
     genre = models.ManyToManyField(Genre, related_name='titles', blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, related_name='titles', blank=True, null=True)
+
+    class Meta:
+        ordering = ['-id']
 
