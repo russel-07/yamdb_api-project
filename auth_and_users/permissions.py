@@ -6,8 +6,7 @@ class IsAdmin(BasePermission):
         return bool(
             request.user and
             (request.user.is_superuser or
-            request.user.is_staff or
-            request.user.is_authenticated and
-            request.user.role == 'admin')
+             request.user.is_staff or
+             request.user.is_authenticated and
+             request.user.role == 'admin')
         )
-

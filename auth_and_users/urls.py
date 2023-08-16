@@ -1,7 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from .views import Registration, EmailConfirmation, UserViewSet, UserRetrieveUpdate
+from .views import Registration, EmailConfirmation
+from .views import UserViewSet, UserRetrieveUpdate
 
 
 router = DefaultRouter()
@@ -14,4 +15,3 @@ urlpatterns = [
     path('v1/users/me/', UserRetrieveUpdate.as_view(), name='User'),
     path('', include(router.urls)),
 ]
-

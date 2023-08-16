@@ -22,13 +22,13 @@ class Registration(views.APIView):
         user.save()
         self.send_confirmation_code(email, confirmation_code)
         return Response({'email': email})
-    
+
     def send_confirmation_code(self, email, confirmation_code):
         subject = 'Confirmation code from YamDb'
         message = f'Your confirmation code: {confirmation_code}'
         from_email = None
         to_email = [email]
-        fail_silently=False
+        fail_silently = False
         send_mail(subject, message, from_email, to_email, fail_silently)
 
 
@@ -41,7 +41,7 @@ class EmailConfirmation(views.APIView):
             token = self.get_token_for_user(user)
             return Response({'token': token})
         return Response({'message': 'Неверный код подтверждения.'})
-    
+
     def get_token_for_user(self, user):
         refresh = RefreshToken.for_user(user)
         return {'refresh': str(refresh), 'access': str(refresh.access_token)}
@@ -54,7 +54,7 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAdmin]
     filter_backends = [filters.SearchFilter]
     search_fields = ['username']
-    
+
 
 class UserRetrieveUpdate(generics.RetrieveUpdateAPIView):
     serializer_class = UserSerializer
@@ -62,5 +62,3 @@ class UserRetrieveUpdate(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
-
-

@@ -7,14 +7,18 @@ from categories_genres_titles.models import Title
 
 class Review(models.Model):
     text = models.TextField(max_length=2000)
-    score = models.PositiveIntegerField(default=None, validators=[MinValueValidator(1), MaxValueValidator(10)])
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews')
-    title = models.ForeignKey(Title, on_delete=models.CASCADE, related_name='reviews')
+    score = models.PositiveIntegerField(default=None,
+                                        validators=[MinValueValidator(1),
+                                                    MaxValueValidator(10)])
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='reviews')
+    title = models.ForeignKey(Title, on_delete=models.CASCADE,
+                              related_name='reviews')
     pub_date = models.DateTimeField("Дата публикации", auto_now_add=True)
 
     def __str__(self):
         return self.text
-    
+
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
@@ -24,12 +28,13 @@ class Review(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=500)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments')
-    review = models.ForeignKey(Review, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='comments')
+    review = models.ForeignKey(Review, on_delete=models.CASCADE,
+                               related_name='comments')
     pub_date = models.DateTimeField("Дата публикации", auto_now_add=True)
-    
+
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
-        ordering = ['-id']   
-
+        ordering = ['-id']

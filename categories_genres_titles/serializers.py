@@ -20,14 +20,19 @@ class ReadTitleSerializer(serializers.ModelSerializer):
     rating = serializers.IntegerField()
 
     class Meta:
-        fields = ['id', 'name', 'year', 'rating', 'description', 'genre', 'category']
+        fields = ['id', 'name', 'year', 'rating',
+                  'description', 'genre', 'category']
         model = Title
 
 
 class WriteTitleSerializer(serializers.ModelSerializer):
-    category = serializers.SlugRelatedField(queryset=Category.objects.all(), many=False, slug_field='slug')
-    genre = serializers.SlugRelatedField(queryset=Genre.objects.all(), many=True, slug_field='slug')
+    category = serializers.SlugRelatedField(queryset=Category.objects.all(),
+                                            many=False, slug_field='slug')
+    genre = serializers.SlugRelatedField(queryset=Genre.objects.all(),
+                                         many=True, slug_field='slug')
     rating = serializers.IntegerField(default=None, read_only=True)
+
     class Meta:
-        fields = ['id', 'name', 'year', 'rating', 'description', 'genre', 'category']
+        fields = ['id', 'name', 'year', 'rating',
+                  'description', 'genre', 'category']
         model = Title

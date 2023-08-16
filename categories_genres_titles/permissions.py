@@ -6,10 +6,9 @@ class IsAdminOrReadOnly(BasePermission):
         return bool(
             request.method == 'GET' or
             (request.method in ('POST', 'PUT', 'PATCH', 'DELETE') and
-            (request.user and
-            (request.user.is_superuser or
-            request.user.is_staff or
-            request.user.is_authenticated and
-            request.user.role == 'admin')))
+             (request.user and
+              (request.user.is_superuser or
+               request.user.is_staff or
+               request.user.is_authenticated and
+               request.user.role == 'admin')))
         )
-

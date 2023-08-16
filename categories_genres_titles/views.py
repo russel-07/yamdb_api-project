@@ -3,7 +3,8 @@ from rest_framework import viewsets, mixins, filters
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Category, Genre, Title
-from .serializers import CategorySerializer, GenreSerializer, ReadTitleSerializer, WriteTitleSerializer
+from .serializers import CategorySerializer, GenreSerializer
+from .serializers import ReadTitleSerializer, WriteTitleSerializer
 from .permissions import IsAdminOrReadOnly
 from .filters import TitleFilter
 
@@ -27,7 +28,10 @@ class GenreViewSet(SampleViewSet):
 
 
 class TitleViewSet(viewsets.ModelViewSet):
-    queryset = Title.objects.all().annotate(rating=Avg('reviews__score')).order_by('-id')
+    queryset = (
+        Title.objects.all().annotate(rating=Avg('reviews__score'))
+        .order_by('-id')
+    )
     permission_classes = [IsAdminOrReadOnly]
     filter_backends = [DjangoFilterBackend]
     filterset_class = TitleFilter
@@ -36,4 +40,3 @@ class TitleViewSet(viewsets.ModelViewSet):
         if self.request.method == 'GET':
             return ReadTitleSerializer
         return WriteTitleSerializer
-

@@ -13,11 +13,10 @@ class IsAuthorOrModeratorOrAdminOrReadOnly(BasePermission):
         return bool(
             request.method == 'GET' or
             (request.method in ('PUT', 'PATCH', 'DELETE') and
-            request.user and
-            (request.user.is_superuser or
-            request.user.is_staff or
-            request.user.is_authenticated and
-            request.user.role in ('admin', 'moderator')) or
-            (request.user == obj.author))
+             request.user and
+             (request.user.is_superuser or
+              request.user.is_staff or
+              request.user.is_authenticated and
+              request.user.role in ('admin', 'moderator')) or
+             (request.user == obj.author))
         )
-
