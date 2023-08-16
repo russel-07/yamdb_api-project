@@ -2,6 +2,9 @@
 env/
 venv/
 
+db.sqlite3
+db.sqlite3-journal
+
 __pycache__/
 *.py[cod]
 
@@ -14,5 +17,7 @@ __pycache__/
 *.sublime-project
 *.sublime-workspace
 
-media/
-
+import_csv.py
+export_csv/
+import_csv/
+sent_emails/

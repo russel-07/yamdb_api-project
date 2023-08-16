@@ -1,8 +1,0 @@
-id,password,last_login,is_superuser,first_name,last_name,is_staff,is_active,date_joined,username,bio,email,role,confirmation_code
-1,pbkdf2_sha256$390000$q16h3zzWVrRJk9e6QzpDrL$/xXHw9IAkds1R4rcR2jLi4rLk6HoYRLDjuED+HA+qK4=,2023-03-22 07:13:13.678427,1,,,1,1,2023-03-21 08:10:40.784174,admin,,admin@yamdb.com,user,
-2,password_1,,1,Rus,Sel,0,1,2023-03-21 08:15:34,russel_07,Description,russel_07@mail.ru,user,blesly-5f791d889da06533987d1358de972be8
-3,password_1,,0,Алексей,Балабанов,1,1,2023-03-21 08:16:03,alex,Description,alex@balabanov.ru,user,blesmr-66fa03550bb806136cb863ccdde4bafa
-4,,,0,Лев,Толстой,0,1,2023-03-21 08:16:08.828175,leo,,leo@tolstoy.com,admin,blesmw-4cd99eb4acd973b89b84ec4b77dfe827
-5,,,0,Антон,Чехов,0,1,2023-03-21 08:16:12.409174,anton,,anton@chekhov.org,moderator,blesn0-08bcfc3336f4820a6a9519ba6d07ebb5
-6,,,0,Сергей,Есенин,0,1,2023-03-21 08:23:53.380174,sergey,,sergey@esenin.net,user,bleszt-1a97d83523734c5f3bc4d56ebc6bec17
-7,,,0,James,Cameron,0,1,2023-03-21 09:00:37.020174,james,,james@cameron.com,user,bleup1-42dbf44a8120dc1f73576bd1dfdfa6a6
